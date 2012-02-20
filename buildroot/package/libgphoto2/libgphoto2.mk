@@ -3,7 +3,7 @@
 # libgphoto2
 #
 #############################################################
-LIBGPHOTO2_VERSION:=2.4.9.1
+LIBGPHOTO2_VERSION:=2.4.11
 LIBGPHOTO2_PORT_VERSION:=0.8.0
 LIBGPHOTO2_SOURCE:=libgphoto2-$(LIBGPHOTO2_VERSION).tar.bz2
 LIBGPHOTO2_SITE:=http://$(BR2_SOURCEFORGE_MIRROR).dl.sourceforge.net/sourceforge/gphoto/
@@ -25,12 +25,13 @@ $(LIBGPHOTO2_DIR)/.configured: $(LIBGPHOTO2_DIR)/.unpacked
 		$(TARGET_CONFIGURE_ARGS) \
 		LTDLINCL=-I$(TARGET_DIR)/usr/include \
 		LIBLTDL="-L$(TARGET_DIR)/usr/lib -lltdl" \
+		LDFLAGS="$(LDFLAGS) -L$(TARGET_DIR)/usr/lib" \
+		LIBS="$(LIBS) -lltdl" \
 		./configure \
 		--target=$(GNU_TARGET_NAME) \
 		--host=$(GNU_TARGET_NAME) \
 		--build=$(GNU_HOST_NAME) \
 		--prefix=/usr \
-		--libdir=$(STAGING_DIR)/usr/lib \
 		--with-drivers=ptp2 \
 		--disable-ptpip \
 		--disable-disk \
