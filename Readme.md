@@ -1,8 +1,8 @@
 1) If you have this from github, you also need to get the kernel
    and place it into a folder named "linux":
-
-   git clone git@github.com:swatgoss/archos-gpl-gen8-kernel.git linux
-
+```
+git clone git@github.com:swatgoss/archos-gpl-gen8-kernel.git linux
+```
 2) To build, type "make" in the buildroot folder.
 
 --- old instructions from http://dev.openaos.org/wiki/SettingUpMultiRootGen8
